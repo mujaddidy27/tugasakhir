@@ -67,14 +67,15 @@
                                         <p class="text-center small">Enter your username & password to login</p>
                                     </div>
 
-                                    <form method="POST" action="{{ route('login') }}" class="row g-3 needs-validation"
-                                        novalidate>
+                                    <form method="POST" action="{{ route('login') }}"
+                                        class="row g-3 needs-validation">
+
+                                        @csrf
 
                                         <div class="col-12">
-                                            <label for="yourUsername" class="form-label">Username</label>
+                                            <label for="yourUsername" class="form-label">email</label>
                                             <div class="input-group has-validation">
-                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="name" class="form-control"
+                                                <input type="text" name="email" class="form-control"
                                                     id="yourUsername" required>
                                                 <div class="invalid-feedback">Please enter your username.</div>
                                             </div>

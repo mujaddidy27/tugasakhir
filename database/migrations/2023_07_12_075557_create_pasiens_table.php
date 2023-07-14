@@ -17,10 +17,9 @@ return new class extends Migration
             $table->date('tgl_lahir');
             $table->enum('j_kelamin', ['Pria', 'Wanita']);
             $table->unsignedBigInteger('kategori_id');
-            $table->string('no_kartu');
+            $table->string('no_kartu')->nullable();
             $table->string('no_hp');
             $table->text('alamat');
-            $table->timestamp('tgl_pemeriksaan');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

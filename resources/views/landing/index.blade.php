@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link href="{{ asset('landing/img/favicon.ico') }}" rel="icon">
 
@@ -69,7 +69,7 @@
             <div class="row gx-5">
                 <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded" src="img/about.jpg"
+                        <img class="position-absolute w-100 h-100 rounded" src="{{ asset('landing/img/about.jpg') }}"
                             style="object-fit: cover;">
                     </div>
                 </div>
@@ -743,14 +743,14 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="{{ asset('landing/lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('landing/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('landing/lib/tempusdominus/js/moment.min.js') }}"></script>
+    <script src="{{ asset('landing/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+    <script src="{{ asset('landing/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{ asset('landing/js/main.js') }}"></script>
 </body>
 
 </html>
