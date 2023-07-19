@@ -140,9 +140,10 @@
                             <form class="row g-3">
                                 <div class="col-8">
                                     <label for="inputAddress" class="form-label">Pilih Pemeriksaan</label>
-                                    <select id="inputState" class="form-select">
-                                        <option selected>BPJS</option>
-                                        <option>UMUM</option>
+                                    <select name="order_item" id="inputState" class="form-select">
+                                        @foreach ($data as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-4">

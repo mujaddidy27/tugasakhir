@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class OrderItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Order::orderBy('created_at', 'DESC')->get();
-
-        return view('admin.orderlab.index', compact('data'));
+        //
     }
 
     /**
@@ -23,9 +20,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $data = OrderItem::all(); // SELECT * FROM order_items;
-
-        return view('admin.orderlab.create', compact('data'));
+        //
     }
 
     /**
@@ -39,7 +34,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show(OrderItem $orderItem)
     {
         //
     }
@@ -47,7 +42,7 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Order $order)
+    public function edit(OrderItem $orderItem)
     {
         //
     }
@@ -55,7 +50,7 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, OrderItem $orderItem)
     {
         //
     }
@@ -63,7 +58,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order)
+    public function destroy(OrderItem $orderItem)
     {
         //
     }

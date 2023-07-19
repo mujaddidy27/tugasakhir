@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('hasil_labs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('pemeriksaan_id');
+            $table->unsignedBigInteger('item_id');
             $table->string('nama');
             $table->integer('nilai');
             $table->unsignedBigInteger('satuan_id')->nullable();

@@ -13,18 +13,21 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_reg');
             $table->unsignedBigInteger('pasien_id');
             $table->unsignedBigInteger('mitra_id');
-            $table->unsignedBigInteger('kategori_pemeriksaan_id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('order_item_id');
+            $table->unsignedBigInteger('jenis_pemeriksaan_id');
             $table->string('keterangan')->nullable();
             $table->enum('status', ['selesai', 'proses'])->default('proses');
             $table->timestamps();
 
             $table->foreign('pasien_id')->references('id')->on('pasiens')->onDelete('cascade');
             $table->foreign('mitra_id')->references('id')->on('mitras')->onDelete('cascade');
-            $table->foreign('kategori_pemeriksaan_id')->references('id')->on('kategori_pemeriksaans')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('order_item_id')->references('id')->on('order_items')->onDelete('cascade');
+            $table->foreign('jenis_pemeriksaan_id')->references('id')->on('jenis_pemeriksaans')->onDelete('cascade');
         });
     }
 
