@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mitra;
+use App\Models\Mitra;
 use Illuminate\Http\Request;
 
 class MitraController extends Controller
@@ -12,7 +12,8 @@ class MitraController extends Controller
      */
     public function index()
     {
-        //
+        $data = Mitra::all();
+        return view('admin.datamaster.datamitra.index', compact('data'));
     }
 
     /**
@@ -20,7 +21,7 @@ class MitraController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.datamaster.datamitra.create');
     }
 
     /**
@@ -28,7 +29,17 @@ class MitraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = validator($request->all(), [
+            'nama' => 'required'
+        ]);
+
+        $data = Mitra::create($request->all());
+
+        if ($data) {
+            return redirect()->route('datamitra.create')->with('status', 'Data berhasil disimpan !');
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**

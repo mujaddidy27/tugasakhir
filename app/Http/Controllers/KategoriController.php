@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Kategori;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -12,7 +12,9 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        //
+        $data = Kategori::all();
+
+        return view('admin.datamaster.datakategori.index', compact('data'));
     }
 
     /**
@@ -28,7 +30,16 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = validator($request->all(), [
+            'nama' => 'required'
+        ]);
+
+        $data = Kategori::create($request->all());
+        if ($data) {
+            return redirect()->route('datakategori.index')->with('status', 'Data berhasil disimpan !');
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -58,8 +69,10 @@ class KategoriController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kategori $kategori)
+    public function destroy($id)
     {
-        //
+        $dt = Kategori::findOrFail($id);
+        $dt->delete();
+        return redirect()->route('datakategori.index')->with('status', 'Data berhasil diihapus !');
     }
 }

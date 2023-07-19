@@ -12,7 +12,9 @@ class PasienController extends Controller
      */
     public function index()
     {
-        $data = Pasien::orderBy('created_at', 'DESC')->get();
+        // $data = Pasien::orderBy('created_at', 'DESC')->get();
+        $data = Pasien::all()->sortBy('created_at');
+
 
         return view('admin.pasien.index', compact('data'));
     }
@@ -22,7 +24,9 @@ class PasienController extends Controller
      */
     public function create()
     {
-        return view('admin.pasien.create');
+        $data = Pasien::all()->sortBy('created_at');
+
+        return view('admin.pasien.create', compact('data'));
     }
 
     /**
@@ -37,7 +41,7 @@ class PasienController extends Controller
         $data = Pasien::create($request->all());
 
         if ($data) {
-            return redirect()->route('pasien.edit');
+            return redirect()->route('pasien.create')->with('status', 'Data berhasil disimpan !');
         } else {
             return redirect()->back();
         }
@@ -69,7 +73,7 @@ class PasienController extends Controller
     {
         $data = Pasien::findOrFail($id);
 
-        
+
         try {
             $data->update($request->all());
             # code...
@@ -86,7 +90,7 @@ class PasienController extends Controller
     {
         $dt = Pasien::findOrFail($id);
         $dt->delete();
-        
+
         return redirect()->route('pasien.index');
     }
 }

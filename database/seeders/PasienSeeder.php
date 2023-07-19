@@ -14,13 +14,15 @@ class PasienSeeder extends Seeder
     public function run(): void
     {
         Pasien::create([
-            'nama' => 'ahmad',
-            'tgl_lahir' => '1986-08-15',
+            'nrm' => '',
+            'nama' => 'Monif',
+            'tgl_lahir' => '1999-08-15',
             'j_kelamin' => 'Pria',
-            'kategori_id' => 1,
+            'nik' => '3507777777777',
             'no_hp' => '1234567890',
             'alamat' => 'sumenep',
             'user_id' => 1,
+
         ]);
     }
 }

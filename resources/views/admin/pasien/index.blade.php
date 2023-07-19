@@ -19,43 +19,57 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">DATA PASIEN</h5>
-
+                        <section class="section m-2"><a href="{{ route('pasien.create') }}">
+                                <li class="gg-user-add row "></li>
+                            </a>
+                        </section>
                         <!-- Table with stripped rows -->
-                        <table class="table datatable">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nama</th>
-                                    <th scope="col">Tgl Lahir</th>
-                                    <th scope="col">Jenis Kelamin</th>
-                                    <th scope="col">Ketegori Peserta</th>
-                                    <th class="text-center">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($data as $item)
+                        <div class="table-responsive">
+                            <table class="table datatable">
+                                <thead>
                                     <tr>
-                                        <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $item->nama }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($item->tgl_lahir)) }}</td>
-                                        <td>{{ $item->j_kelamin }}</td>
-                                        <td>{{ $item->kategori->nama }}</td>
-                                        <td>
-                                            <form method="POST" action="{{ route('pasien.destroy', $item->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <a href="{{ route('pasien.show', $item->id) }}"
-                                                    class="btn btn-primary">Lihat</a>
-                                                <a href="{{ route('pasien.edit', $item->id) }}"
-                                                    class="btn btn-warning">Edit</a>
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </td>
+                                        <th scope="col">NRM</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Tgl Lahir</th>
+                                        <th scope="col">Jenis Kelamin</th>
+                                        <th scope="col">NIK</th>
+                                        <th scope="col">No Hp</th>
+                                        <th scope="col">Alamat</th>
+                                        <th scope="col">Cetak</th>
+                                        <th class="text-center">Aksi</th>
                                     </tr>
-                                @endforeach
+                                </thead>
+                                <tbody>
+                                    @foreach ($data as $item)
+                                        <tr>
+                                            {{-- <th scope="row">{{ $loop->iteration }}</th> --}}
+                                            <td>{{ $item->nrm }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($item->tgl_lahir)) }}</td>
+                                            <td>{{ $item->j_kelamin }}</td>
+                                            <td>{{ $item->nik }}</td>
+                                            <td>{{ $item->no_hp }}</td>
+                                            <td>{{ $item->alamat }}</td>
 
-                            </tbody>
-                        </table>
+                                            <td class=""> <a href="{{ route('pasien.show', $item->id) }}"
+                                                    class="btn btn-primary"><i class="bi bi-view-list"></i></a></td>
+                                            <td>
+                                                <form method="POST" action="{{ route('pasien.destroy', $item->id) }}">
+                                                    @method('DELETE')
+                                                    @csrf
+
+                                                    <a href="{{ route('pasien.edit', $item->id) }}"
+                                                        class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                                    <button type="submit" class="btn btn-danger "><i
+                                                            class="bi bi-eraser"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
                         <!-- End Table with stripped rows -->
 
                     </div>

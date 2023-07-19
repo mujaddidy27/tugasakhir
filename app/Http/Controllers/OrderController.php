@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -12,7 +12,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $data = Order::orderBy('created_at', 'DESC')->get();
+
+        return view('admin.orderlab.index', compact('data'));
     }
 
     /**
@@ -20,7 +22,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $data = Order::orderBy('created_at', 'DESC')->get();
+
+        return view('admin.orderlab.create', compact('data'));
     }
 
     /**

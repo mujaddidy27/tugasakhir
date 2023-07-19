@@ -11,18 +11,22 @@ class Pasien extends Model
     use HasFactory;
 
     protected $fillable = [
+        'nrm',
         'nama',
         'tgl_lahir',
         'j_kelamin',
-        'kategori_id',
-        'no_kartu',
+        'nik',
         'no_hp',
         'alamat',
         'user_id',
     ];
-
-    public function kategori()
+    public static function boot()
     {
-        return $this->belongsTo(Kategori::class);
+        parent::boot();
+
+        static::created(function ($pasiens) {
+            $pasiens->nrm .= 'WK' . date('ym') . '000' . $pasiens->id;
+            $pasiens->save();
+        });
     }
 }

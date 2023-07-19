@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Pemeriksaan;
+use App\Models\Pemeriksaan;
 use Illuminate\Http\Request;
 
 class PemeriksaanController extends Controller
@@ -12,7 +12,9 @@ class PemeriksaanController extends Controller
      */
     public function index()
     {
-        //
+        $data = Pemeriksaan::all();
+
+        return view('admin.pemeriksaanlab.index', compact('data'));
     }
 
     /**
@@ -20,7 +22,9 @@ class PemeriksaanController extends Controller
      */
     public function create()
     {
-        //
+        $data = Pemeriksaan::all();
+
+        return view('admin.pemeriksaanlab.create', compact('data'));
     }
 
     /**

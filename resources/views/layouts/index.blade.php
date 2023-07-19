@@ -5,14 +5,15 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <title>Dashboard - Silab</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Favicons -->
-    <link href="{{ asset('admin/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('admin/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
+    <!-- Favicons -->
+    <link href="{{ asset('admin/img/favwk.png') }}" rel="icon">
+    <link href="{{ asset('admin/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/user-add.css' rel='stylesheet'>
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link
