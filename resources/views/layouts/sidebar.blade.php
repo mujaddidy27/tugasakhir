@@ -145,8 +145,8 @@
             </a>
             <ul id="datamaster-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('datakategori.index') }}">
-                        <i class="bi bi-circle"></i><span>Data Kategori</span>
+                    <a href="{{ route('datajenispemeriksaan.index') }}">
+                        <i class="bi bi-circle"></i><span>Data Jenis Pemeriksaan</span>
                     </a>
                 </li>
                 <li>
@@ -154,16 +154,7 @@
                         <i class="bi bi-circle"></i><span>Data Mitra</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('itemlab.index') }}">
-                        <i class="bi bi-circle"></i><span>Item Pemeriksaan Lab</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('itemrotgen.index') }}">
-                        <i class="bi bi-circle"></i><span>Item Pemeriksaan Rotgen</span>
-                    </a>
-                </li>
+
 
             </ul>
         </li><!-- End Data Master Nav -->

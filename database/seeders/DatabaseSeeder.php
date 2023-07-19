@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             PasienSeeder::class,
             MitraSeeder::class,
             OrderItemSeeder::class,
+            JenisPemeriksaanSeeder::class,
         ]);
     }
 }

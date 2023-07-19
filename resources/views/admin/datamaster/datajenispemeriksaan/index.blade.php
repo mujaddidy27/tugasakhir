@@ -15,11 +15,14 @@
 
     <section class="section">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">DATA KATEGORI</h5>
+                        <h5 class="card-title">DATA JENIS PEMERIKSAAN</h5>
+                        <a href="{{ route('datajenispemeriksaan.create') }}">
+                            <button type="button" class="btn btn-primary"><i class="bi bi-star me-1"></i> Tambah</button>
+                        </a>
                         @if (session('status'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session('status') }}
@@ -28,24 +31,38 @@
                             </div>
                         @endif
                         <!-- Table with stripped rows -->
-                        <table class="table ">
+                        <table class="table datatable ">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">Kode</th>
                                     <th scope="col">Nama</th>
+                                    <th scope="col">Nilai Rujukan</th>
+                                    <th scope="col">Satuan</th>
+                                    <th scope="col">Harga</th>
                                     <th scope="col">Aksi</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $item)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>{{ $item->kode }}</td>
                                         <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->nilai_rujukan }}</td>
+                                        <td>{{ $item->satuan }}</td>
+                                        <td>{{ $item->harga }}</td>
                                         <td>
-                                            <form action="{{ route('datakategori.destroy', $item->id) }}" method="POST">
+                                            <form method="POST"
+                                                action="{{ route('datajenispemeriksaan.destroy', $item->id) }}">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+
+                                                <a href="{{ route('datajenispemeriksaan.edit', $item->id) }}"
+                                                    class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                                <button type="submit" class="btn btn-danger "><i
+                                                        class="bi bi-eraser"></i></button>
                                             </form>
                                         </td>
                                     </tr>
@@ -53,19 +70,6 @@
 
                             </tbody>
                         </table>
-                        <form class="row g-2" method="post" action="{{ route('datakategori.store') }}">
-                            @csrf
-                            <input class="form-control" type="text" name="nama" placeholder="Tambah Kategori">
-                            <button class="btn btn-primary">Tambah</a>
-                        </form>
-                        {{-- <form method="POST" action="{{ route('pasien.destroy', $item->id) }}">
-                            @method('DELETE')
-                            @csrf
-                            <a href="{{ route('pasien.show', $item->id) }}" class="btn btn-primary">Tambah</a>
-                            <a href="{{ route('pasien.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-                            <button type="submit" class="btn btn-danger ">Hapus</button>
-                        </form> --}}
-                        <!-- End Table with stripped rows -->
 
                     </div>
                 </div>

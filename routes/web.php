@@ -3,15 +3,14 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\JenisPemeriksaanController;
 use App\Http\Controllers\PemeriksaanController;
-use App\Http\Controllers\PemeriksaanRotgenControllerController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ItemPemeriksaanLabController;
 use App\Http\Controllers\ItemPemeriksaanRotegenController;
 use App\Http\Controllers\PemeriksaanRotgenController;
-use App\Models\ItemPemeriksaanLab;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,10 +65,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('pemeriksaan', PemeriksaanController::class);
     Route::resource('pemeriksaanrotgen', PemeriksaanRotgenController::class);
 
-    Route::resource('datakategori', KategoriController::class);
+    Route::resource('datajenispemeriksaan', JenisPemeriksaanController::class);
     Route::resource('datamitra', MitraController::class);
-    Route::resource('itemlab', ItemPemeriksaanLabController::class);
-    Route::resource('itemrotgen', ItemPemeriksaanRotegenController::class);
 });
 
 
