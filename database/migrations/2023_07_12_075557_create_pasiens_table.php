@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nrm')->default()->nullable();
             $table->string('nama');
             $table->date('tgl_lahir');
-            $table->enum('j_kelamin', ['Pria', 'Wanita']);
+            $table->enum('j_kelamin', ['Laki-laki', 'Perempuan']);
             $table->string('nik')->unique();
             $table->string('no_hp');
             $table->text('alamat');

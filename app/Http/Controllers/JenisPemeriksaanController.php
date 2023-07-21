@@ -55,7 +55,7 @@ class JenisPemeriksaanController extends Controller
     {
         $data = JenisPemeriksaan::findOrFail($id);
         if ($data) {
-            return view('admin.pasien.edit', compact('data'));
+            return view('admin.datamaster.datajenispemeriksaan.edit', compact('data'));
         }
     }
 
@@ -71,7 +71,7 @@ class JenisPemeriksaanController extends Controller
         try {
             $data->update($request->all());
             # code...
-            return redirect()->route('pasien.index');
+            return redirect()->route('datajenispemeriksaan.index')->with('status', 'Data Berhasil Diupdate !');
         } catch (\Throwable $e) {
             # code...
         }
@@ -85,6 +85,6 @@ class JenisPemeriksaanController extends Controller
         $dt = JenisPemeriksaan::findOrFail($id);
         $dt->delete();
 
-        return redirect()->route('datajenispemeriksaan.index');
+        return redirect()->route('datajenispemeriksaan.index')->with('status', 'Data Berhasil Dihapus !');
     }
 }

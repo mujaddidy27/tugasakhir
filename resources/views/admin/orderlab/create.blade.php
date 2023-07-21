@@ -31,29 +31,34 @@
 
                             <!-- Vertical Form -->
                             <form class="row g-3">
+
+
                                 <div class="col-12">
                                     <label for="inputNanme4" class="form-label">NRM</label>
-                                    <input type="text" class="form-control" id="inputNanme4">
+                                    <select name="order_item" id="inputState" class="form-select">
+                                        @foreach ($datapasien as $pasien)
+                                            <option value="{{ $pasien->id }}">{{ $pasien->nrm }}</option>
+                                        @endforeach
+                                    </select>
+
                                 </div>
                                 <div class="col-12">
-                                    <label for="inputEmail4" class="form-label">Nama</label>
-                                    <input type="email" class="form-control" id="inputEmail4">
+                                    @foreach ($datapasien as $pas)
+                                        <label for="nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="inputEmail4"
+                                            value="{{ $pas->nama }}">
+                                    @endforeach
                                 </div>
                                 <div class="col-12">
-                                    <label for="inputPassword4" class="form-label">Tgl Lahir</label>
-                                    <input type="password" class="form-control" id="inputPassword4">
+                                    <label for="tgl" class="form-label">Tgl Lahir</label>
+                                    <input type="text" class="form-control" id="inputPassword4">
                                 </div>
                                 <div class="col-12">
                                     <label for="inputAddress" class="form-label">Jenis Kelamin</label>
                                     <input type="text" class="form-control" id="inputAddress">
                                 </div>
-                                <div class="col-12">
-                                    <label for="inputAddress" class="form-label">Kategori</label>
-                                    <select id="inputState" class="form-select">
-                                        <option selected>BPJS</option>
-                                        <option>UMUM</option>
-                                    </select>
-                                </div>
+
+
 
                             </form><!-- Vertical Form -->
 
@@ -71,25 +76,26 @@
                             <h5 class="card-title">Reg Lab</h5>
                             <!-- No Labels Form -->
                             <form class="row g-3">
-                                <div class="col-md-12">
-                                    <label for="input" class="form-label">No Reg Lab</label>
-                                    <input type="text" class="form-control">
-                                </div>
+
                                 <div class="col-md-6">
                                     <label for="input" class="form-label">Tanggal</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="tgl"
+                                        value="{{ date('d / m / Y') }}" disabled>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="input" class="form-label">Jam</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="jam" value="{{ date('H.i.s a') }}"
+                                        disabled>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="input" class="form-label">Id Petugas</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="user_id" value="{{ Auth::user()->id }}"
+                                        disabled>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="input" class="form-label">Nama Petugas</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="petugas"
+                                        value="{{ Auth::user()->name }}" disabled>
                                 </div>
 
                             </form><!-- End No Labels Form -->
@@ -147,7 +153,7 @@
                                     </select>
                                 </div>
                                 <div class="col-4">
-                                    <label for="input" class="form-label">Kode</label>
+                                    <label for="input" class="form-label"></label>
                                     <input type="text" class="form-control">
                                 </div>
                                 <div class="col-8">

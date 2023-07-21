@@ -14,11 +14,13 @@ class MitraSeeder extends Seeder
     public function run(): void
     {
         Mitra::create([
+            'kode' => '',
             'nama' => 'Dr. Fathurrahman',
             'alamat' => 'Jl. Pahlawan Kec Kota Kab Sumenep',
             'kontak' => ('087237463746'),
         ]);
         Mitra::create([
+            'kode' => '',
             'nama' => 'Dr. Susilo',
             'alamat' => 'Jl. Pahlawan Kec Kota Kab Sumenep',
             'kontak' => ('087237463746'),

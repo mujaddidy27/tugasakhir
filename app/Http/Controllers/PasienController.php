@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
 
+
 class PasienController extends Controller
 {
     /**
@@ -18,6 +19,7 @@ class PasienController extends Controller
 
         return view('admin.pasien.index', compact('data'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -77,7 +79,7 @@ class PasienController extends Controller
         try {
             $data->update($request->all());
             # code...
-            return redirect()->route('pasien.index');
+            return redirect()->route('pasien.index')->with('status', 'Data berhasil diupdate !');
         } catch (\Throwable $e) {
             # code...
         }
@@ -91,6 +93,6 @@ class PasienController extends Controller
         $dt = Pasien::findOrFail($id);
         $dt->delete();
 
-        return redirect()->route('pasien.index');
+        return redirect()->route('pasien.index')->with('status', 'Data berhasil dihapus !');
     }
 }

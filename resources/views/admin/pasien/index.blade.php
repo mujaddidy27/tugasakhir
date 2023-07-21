@@ -19,11 +19,20 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">DATA PASIEN</h5>
-                        <section class="section m-2"><a href="{{ route('pasien.create') }}">
-                                <li class="gg-user-add row "></li>
-                            </a>
-                        </section>
+                        <a href="{{ route('pasien.create') }}">
+                            <button type="button" class="btn btn-primary"><i class="bi bi-star me-1"></i> Tambah</button>
+                        </a>
+                        <a href="{{ route('pasi') }}">
+                            <button type="button" class="btn btn-success"><i class="bi bi-star me-1"></i> Pdf</button>
+                        </a>
                         <!-- Table with stripped rows -->
+                        @if (session('status'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('status') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
                         <div class="table-responsive">
                             <table class="table datatable">
                                 <thead>

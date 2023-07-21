@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Pasien;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
@@ -23,9 +24,10 @@ class OrderController extends Controller
      */
     public function create()
     {
+        $datapasien = Pasien::all();
         $data = OrderItem::all(); // SELECT * FROM order_items;
 
-        return view('admin.orderlab.create', compact('data'));
+        return view('admin.orderlab.create', compact('data', 'datapasien'));
     }
 
     /**

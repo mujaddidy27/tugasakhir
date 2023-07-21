@@ -53,17 +53,29 @@ class MitraController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Mitra $mitra)
+    public function edit($id)
     {
-        //
+        $data = Mitra::findOrFail($id);
+        if ($data) {
+            return view('admin.datamaster.datamitra.edit', compact('data'));
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Mitra $mitra)
+    public function update(Request $request, $id)
     {
-        //
+        $data = Mitra::findOrFail($id);
+
+
+        try {
+            $data->update($request->all());
+            # code...
+            return redirect()->route('datamitra.index')->with('status', 'Data berhasil diupdate !');
+        } catch (\Throwable $e) {
+            # code...
+        }
     }
 
     /**

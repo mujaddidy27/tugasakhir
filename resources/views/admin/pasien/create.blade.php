@@ -47,7 +47,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                     @enderror
-                                    <input type="text" class="form-control" name="nama">
+                                    <input type="text" class="form-control" name="nama" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="tgl_lahir" class="form-label">Tgl Lahir</label>
@@ -58,7 +58,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                     @enderror
-                                    <input type="date" class="form-control" name="tgl_lahir">
+                                    <input type="date" class="form-control" name="tgl_lahir" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="jenisk" class="form-label">Jenis Kelamin</label>
@@ -69,7 +69,14 @@
                                                 aria-label="Close"></button>
                                         </div>
                                     @enderror
-                                    <input type="text" class="form-control" name="j_kelamin">
+                                    <select class="form-select" aria-label="Default select example" name="j_kelamin"
+                                        required>
+                                        <option selected>Pilih Jenis Kelamin</option>
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+
+                                    </select>
+
                                 </div>
                                 <div class="col-md-6">
 
@@ -81,7 +88,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                     @enderror
-                                    <input type="int" class="form-control" name="nik">
+                                    <input type="int" class="form-control" name="nik" required>
                                 </div>
 
                                 <div class="col-md-12">
@@ -93,7 +100,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                     @enderror
-                                    <input type="text" class="form-control" name="no_hp">
+                                    <input type="text" class="form-control" name="no_hp" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="alamat" class="form-label">Alamat</label>
@@ -104,7 +111,8 @@
                                                 aria-label="Close"></button>
                                         </div>
                                     @enderror
-                                    <input type="text" class="form-control" name="alamat" placeholder="1234 Main St">
+                                    <input type="text" class="form-control" name="alamat" required
+                                        placeholder="1234 Main St">
                                 </div>
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 <div class="text-center">

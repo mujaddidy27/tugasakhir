@@ -154,6 +154,11 @@
                         <i class="bi bi-circle"></i><span>Data Mitra</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('datamitra.index') }}">
+                        <i class="bi bi-circle"></i><span>Data Mitra</span>
+                    </a>
+                </li>
 
 
             </ul>
@@ -161,9 +166,9 @@
 
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/profile">
+            <a class="nav-link collapsed" href="{{ route('usersilab.index') }}">
                 <i class="bi bi-person"></i>
-                <span>Profile</span>
+                <span>Users</span>
             </a>
         </li><!-- End Profile Page Nav -->
 

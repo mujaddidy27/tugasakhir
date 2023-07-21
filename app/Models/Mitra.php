@@ -14,4 +14,13 @@ class Mitra extends Model
         'alamat',
         'kontak',
     ];
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($mitras) {
+            $mitras->kode .= 'FA' . date('ym') . '000' . $mitras->id;
+            $mitras->save();
+        });
+    }
 }

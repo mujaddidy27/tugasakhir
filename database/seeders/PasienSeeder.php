@@ -17,7 +17,7 @@ class PasienSeeder extends Seeder
             'nrm' => '',
             'nama' => 'Monif',
             'tgl_lahir' => '1999-08-15',
-            'j_kelamin' => 'Pria',
+            'j_kelamin' => 'Laki-laki',
             'nik' => '3507777777777',
             'no_hp' => '1234567890',
             'alamat' => 'sumenep',
