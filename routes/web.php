@@ -66,6 +66,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('pasien', PasienController::class);
     Route::resource('order', OrderController::class);
+    Route::get('order/cari/{key}/pasien', [OrderController::class, 'cari_pasien'])->name('order.caripasien');
     Route::resource('pemeriksaan', PemeriksaanController::class);
     Route::resource('pemeriksaanrotgen', PemeriksaanRotgenController::class);
 

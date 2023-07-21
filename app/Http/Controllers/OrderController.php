@@ -20,6 +20,17 @@ class OrderController extends Controller
     }
 
     /**
+     * cari pasien
+     */
+    public function cari_pasien($key)
+    {
+        $data = Pasien::where('nrm', $key)->orWhere('nama', $key)->first();
+        $petugas = auth()->user();
+
+        return response()->json(['pasien'=>$data, 'petugas'=>$petugas]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

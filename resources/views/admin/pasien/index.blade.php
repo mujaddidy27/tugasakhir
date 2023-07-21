@@ -22,9 +22,9 @@
                         <a href="{{ route('pasien.create') }}">
                             <button type="button" class="btn btn-primary"><i class="bi bi-star me-1"></i> Tambah</button>
                         </a>
-                        <a href="{{ route('pasi') }}">
+                        {{-- <a href="{{ route('pasien') }}">
                             <button type="button" class="btn btn-success"><i class="bi bi-star me-1"></i> Pdf</button>
-                        </a>
+                        </a> --}}
                         <!-- Table with stripped rows -->
                         @if (session('status'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">

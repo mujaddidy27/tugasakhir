@@ -17,14 +17,15 @@ class HakAksesController extends Controller
     public function index()
     {
         $data = Pasien::count();
-        if (Auth::id()) {
+        // if (Auth::id()) {
             $hak_akses = Auth()->user()->hak_akses;
             if ($hak_akses == 'admin') {
                 return view('admin.home.index', compact('data'));
             } else  if ($hak_akses == 'analis') {
                 return view('analis.home.index');
             }
-        }
+        // }
+        // return "tes";
     }
 
     /**

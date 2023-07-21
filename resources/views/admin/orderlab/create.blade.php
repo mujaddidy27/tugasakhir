@@ -34,28 +34,20 @@
 
 
                                 <div class="col-12">
-                                    <label for="inputNanme4" class="form-label">NRM</label>
-                                    <select name="order_item" id="inputState" class="form-select">
-                                        @foreach ($datapasien as $pasien)
-                                            <option value="{{ $pasien->id }}">{{ $pasien->nrm }}</option>
-                                        @endforeach
-                                    </select>
-
+                                    <label for="inputNanme4" class="form-label">NRM/Nama</label>
+                                    <input type="text" class="form-control" id="kata_kunci">
                                 </div>
                                 <div class="col-12">
-                                    @foreach ($datapasien as $pas)
-                                        <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="inputEmail4"
-                                            value="{{ $pas->nama }}">
-                                    @endforeach
+                                    <label for="nama" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="nama">
                                 </div>
                                 <div class="col-12">
                                     <label for="tgl" class="form-label">Tgl Lahir</label>
-                                    <input type="text" class="form-control" id="inputPassword4">
+                                    <input type="text" class="form-control" id="ttl">
                                 </div>
                                 <div class="col-12">
                                     <label for="inputAddress" class="form-label">Jenis Kelamin</label>
-                                    <input type="text" class="form-control" id="inputAddress">
+                                    <input type="text" class="form-control" id="j_kelamin">
                                 </div>
 
 
@@ -84,18 +76,15 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="input" class="form-label">Jam</label>
-                                    <input type="text" class="form-control" name="jam" value="{{ date('H.i.s a') }}"
-                                        disabled>
+                                    <input type="text" class="form-control" name="jam" id="jam" disabled>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="input" class="form-label">Id Petugas</label>
-                                    <input type="text" class="form-control" name="user_id" value="{{ Auth::user()->id }}"
-                                        disabled>
+                                    <input type="text" class="form-control" name="user_id" disabled>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="input" class="form-label">Nama Petugas</label>
-                                    <input type="text" class="form-control" name="petugas"
-                                        value="{{ Auth::user()->name }}" disabled>
+                                    <input type="text" class="form-control" name="petugas" id="nama_petugas" disabled>
                                 </div>
 
                             </form><!-- End No Labels Form -->
@@ -313,3 +302,43 @@
         </section>
     </div>
 @endsection
+
+@push('javascript')
+    <script src="{{ asset('admin/js/code.jquery.com_jquery-3.7.0.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            let timer;
+            $('#kata_kunci').on('keyup', function(e) {
+                const key = $(this).val();
+                const URL = `/order/cari/${key}/pasien`;
+                const token = $("meta[name='csrf-token']").attr("content");
+                // WK23070001
+                // console.log(URL);
+                clearTimeout(timer);
+                if (key.length >= 3) {
+                    timer = setTimeout(() => {
+                        $.ajax({
+                            url: URL,
+                            type: 'GET',
+                            cache: false,
+                            data: {
+                                '_token': token,
+                            },
+                            success: function(e) {
+                                console.log(e);
+                                if (e.pasien !== null) {
+                                    $('#nama').val(e.pasien.nama);
+                                    $('#ttl').val(e.pasien.tgl_lahir);
+                                    $('#j_kelamin').val(e.pasien.j_kelamin);
+                                    $('#nama_petugas').val(e.petugas.name);
+                                }
+                            }
+                        })
+                    }, 2000);
+                }
+            })
+            // akhir pencarian pasien
+
+        })
+    </script>
+@endpush
